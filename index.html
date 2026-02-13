@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Love Proposal 😍 Ye dil jo tumpe aaya hai, Khuda ko bhi bhulaya hai, Jabse hue hain aaj tumse dur, Teri yaadon ne sataya hai</title>
+  <title>Love Proposal 😍</title>
   <style>
     body {
       text-align: center;
@@ -9,41 +9,50 @@
       margin-top: 100px;
     }
 
-    .container {
-      position: relative;
-      display: inline-block;
-    }
-
     button {
       padding: 15px 30px;
       font-size: 18px;
       margin: 20px;
       cursor: pointer;
-      position: relative;
-      z-index: 1;
-    }
-
-    #loveMeter {
-      position: absolute;
-      top: 0;
-      left: 0;
-      height: 100%;
-      width: 0%;
-      background-color: pink;
-      z-index: 2;
-      transition: width 0.5s ease;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-weight: bold;
-      font-size: 18px;
-      color: red;
       border-radius: 8px;
     }
 
+    #yesBtn {
+      background-color: lightgreen;
+    }
+
     #noBtn {
+      background-color: lightcoral;
+    }
+
+    /* Love meter container */
+    .meter-container {
+      width: 300px;
+      height: 30px;
+      border: 2px solid #ff4d6d;
+      margin: 20px auto;
+      border-radius: 20px;
+      overflow: hidden;
       position: relative;
-      z-index: 1;
+    }
+
+    #loveMeter {
+      height: 100%;
+      width: 0%;
+      background-color: pink;
+      text-align: center;
+      line-height: 30px;
+      font-weight: bold;
+      color: red;
+      transition: width 0.4s ease;
+    }
+
+    #shayari {
+      margin-top: 20px;
+      font-size: 18px;
+      color: #d6336c;
+      display: none;
+      white-space: pre-line;
     }
   </style>
 </head>
@@ -52,9 +61,21 @@
 
   <h2>Do you love me? ❤️</h2>
 
-  <div class="container">
-    <button id="noBtn" onclick="increaseLove()">NO</button>
+  <!-- Buttons -->
+  <button id="yesBtn" onclick="sayYes()">YES 💖</button>
+  <button id="noBtn" onclick="increaseLove()">NO 😢</button>
+
+  <!-- Love Meter BELOW buttons -->
+  <div class="meter-container">
     <div id="loveMeter">Love Meter 0%</div>
+  </div>
+
+  <!-- Shayari -->
+  <div id="shayari">
+Ye dil jo tumpe aaya hai,  
+Khuda ko bhi bhulaya hai,  
+Jabse hue hain aaj tumse dur,  
+Teri yaadon ne sataya hai.
   </div>
 
   <script>
@@ -69,9 +90,14 @@
       meter.style.width = love + "%";
       meter.innerHTML = "Love Meter " + love + "%";
 
-      if (love >= 100) {
-        meter.innerHTML = "❤️ You Love Me! ❤️";
+      if (love === 100) {
+        document.getElementById("noBtn").style.display = "none";
+        meter.innerHTML = "❤️ Love Wins! ❤️";
       }
+    }
+
+    function sayYes() {
+      document.getElementById("shayari").style.display = "block";
     }
   </script>
 
