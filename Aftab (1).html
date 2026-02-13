@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Love Proposal 😍 Ye dil jo tumpe aaya hai, Khuda ko bhi bhulaya hai, Jabse hue hain aaj tumse dur, Teri yaadon ne sataya hai</title>
+  <style>
+    body {
+      text-align: center;
+      font-family: Arial, sans-serif;
+      margin-top: 100px;
+    }
+
+    .container {
+      position: relative;
+      display: inline-block;
+    }
+
+    button {
+      padding: 15px 30px;
+      font-size: 18px;
+      margin: 20px;
+      cursor: pointer;
+      position: relative;
+      z-index: 1;
+    }
+
+    #loveMeter {
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 0%;
+      background-color: pink;
+      z-index: 2;
+      transition: width 0.5s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      font-size: 18px;
+      color: red;
+      border-radius: 8px;
+    }
+
+    #noBtn {
+      position: relative;
+      z-index: 1;
+    }
+  </style>
+</head>
+
+<body>
+
+  <h2>Do you love me? ❤️</h2>
+
+  <div class="container">
+    <button id="noBtn" onclick="increaseLove()">NO</button>
+    <div id="loveMeter">Love Meter 0%</div>
+  </div>
+
+  <script>
+    let love = 0;
+
+    function increaseLove() {
+      if (love < 100) {
+        love += 10;
+      }
+
+      let meter = document.getElementById("loveMeter");
+      meter.style.width = love + "%";
+      meter.innerHTML = "Love Meter " + love + "%";
+
+      if (love >= 100) {
+        meter.innerHTML = "❤️ You Love Me! ❤️";
+      }
+    }
+  </script>
+
+</body>
+</html>
